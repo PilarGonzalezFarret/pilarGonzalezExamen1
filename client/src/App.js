@@ -11,9 +11,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage></HomePage>}></Route>
-          <Route path="/pets/new" element={<CreatePage></CreatePage>}></Route>
-          <Route path="/pets/:id" element={<DetailsPage></DetailsPage>}></Route>
-          <Route path="/pets/:id/edit" element={<EditPage></EditPage>}></Route>
+          <Route path="/pirates/new" element={<CreatePage></CreatePage>}></Route>
+          <Route path="/pirates/:id" element={<DetailsPage></DetailsPage>}></Route>
+          <Route path="/pirates/:id/edit" element={<EditPage></EditPage>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

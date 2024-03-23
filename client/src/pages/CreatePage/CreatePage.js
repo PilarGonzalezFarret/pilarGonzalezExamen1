@@ -15,13 +15,13 @@ export const CreatePage = () => {
   const [skillsTwo, setSkillsTwo] = useState("");
   const [skillsThree, setSkillsThree] = useState("");
 
-  const createPet = async () => {
+  const createPirate = async () => {
     if (name !== "" && type !== "" && description !== "") {
       let data = {
-        petName: name,
-        petType: type,
-        petDescription: description,
-        petSkills: {
+        pirateName: name,
+        pirateType: type,
+        pirateDescription: description,
+        pirateSkills: {
           skillOne: skillsOne,
           skillTwo: skillsTwo,
           skillThree: skillsThree,
@@ -29,7 +29,7 @@ export const CreatePage = () => {
       };
       try {
         let result = await axios.post(
-          "http://localhost:8000/api/pets/new",
+          "http://localhost:8000/api/pirates/new",
           data
         );
         if (result.status === 200) {
@@ -43,21 +43,20 @@ export const CreatePage = () => {
     }
   };
 
-  const goToHome = () => {
+  const seeCrew = () => {
     navigate("/");
   };
 
   return (
     <div>
       <HeaderCompo
-        onclick={goToHome}
-        subTitle={"Know a pet needing a home?"}
-        linkName={"Back to home"}
+        onclick={seeCrew}
+        linkName={"See Crew"}
       ></HeaderCompo>
 
       <div className={styles.formContainer}>
         <form>
-          <label>Pet Name:</label>
+          <label>Pirate Name:</label>
           <input
             type="text"
             value={name}
@@ -68,7 +67,7 @@ export const CreatePage = () => {
               Name must be at least 3 characters long...
             </p>
           )}
-          <label>Pet Type:</label>
+          <label>Image Url:</label>
           <input
             type="text"
             value={type}
@@ -79,7 +78,7 @@ export const CreatePage = () => {
               Type must be at least 3 characters long...
             </p>
           )}
-          <label>Pet Description:</label>
+          <label># of Treassure Chests:</label>
           <input
             type="text"
             value={description}
@@ -91,8 +90,8 @@ export const CreatePage = () => {
             </p>
           )}
           <ButtonCompo
-            onclick={createPet}
-            name={"📤 Add Pet"}
+            onclick={createPirate}
+            name={"📤 Add Pirate"}
             color={"dodgerblue"}
           ></ButtonCompo>
         </form>

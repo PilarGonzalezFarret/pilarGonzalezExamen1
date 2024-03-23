@@ -7,36 +7,36 @@ import { HeaderCompo } from "../../components/HeaderCompo/HeaderCompo.jsx";
 
 export const DetailsPage = () => {
   const params = useParams();
-  const petId = params.id;
+  const pirateId = params.id;
 
   const navigate = useNavigate();
 
-  const [pet, setPet] = useState({
-    petName: "",
-    petType: "",
-    petDescription: "",
-    petSkills: {
+  const [pirate, setPirate] = useState({
+    pirateName: "",
+    pirateType: "",
+    pirateDescription: "",
+    pirateSkills: {
       skillOne: "",
       skillTwo: "",
       skillThree: "",
     },
   });
 
-  const getPetById = async () => {
+  const getPirateById = async () => {
     try {
       let result = await axios.get(
-        "http://localhost:8000/api/pets/get/" + petId
+        "http://localhost:8000/api/pirates/get/" + pirateId
       );
-      setPet(result.data);
+      setPirate(result.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const adoptPet = async () => {
+  const adoptPirate = async () => {
     try {
       let result = await axios.delete(
-        "http://localhost:8000/api/pets/delete/" + petId
+        "http://localhost:8000/api/pirates/delete/" + pirateId
       );
       if (result.status === 200) navigate("/");
     } catch (error) {
@@ -44,24 +44,24 @@ export const DetailsPage = () => {
     }
   };
 
-  const goToHome = () => {
+  const seeCrew = () => {
     navigate("/");
   };
 
   useEffect(() => {
-    getPetById();
+    getPirateById();
   }, []);
 
   return (
     <div>
       <HeaderCompo
-        onclick={goToHome}
-        subTitle={`Details about: ${pet.petName}`}
+        onclick={seeCrew}
+        subTitle={`Details about: ${pirate.pirateName}`}
         linkName={"Back to Home"}
         boton={
           <ButtonCompo
-            onclick={adoptPet}
-            name={`🏰 Adopt ${pet.petName}`}
+            onclick={adoptPirate}
+            name={`🏰 Adopt ${pirate.pirateName}`}
             color={"red"}
           ></ButtonCompo>
         }
@@ -69,21 +69,21 @@ export const DetailsPage = () => {
 
       <div className={styles.container}>
         <div className={styles.subContainer}>
-          <h3>Pet Type: </h3>
-          <label>{pet.petType}</label>
+          <h3>Pirate Type: </h3>
+          <label>{pirate.pirateType}</label>
         </div>
 
         <div className={styles.subContainer}>
           <h3>Description:</h3>
-          <label>{pet.petDescription}</label>
+          <label>{pirate.pirateDescription}</label>
         </div>
 
         <div className={styles.subContainer}>
           <h3>Skills :</h3>
           <label className={styles.skills}>
-            {pet.petSkills.skillOne} <br />
-            {pet.petSkills.skillTwo} <br />
-            {pet.petSkills.skillThree}
+            {pirate.pirateSkills.skillOne} <br />
+            {pirate.pirateSkills.skillTwo} <br />
+            {pirate.pirateSkills.skillThree}
           </label>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { ButtonCompo } from "../../components/ButtonCompo/ButtonCompo.jsx";
 
 export const EditPage = () => {
   const params = useParams();
-  const petId = params.id;
+  const pirateId = params.id;
 
   const navigate = useNavigate();
 
@@ -18,29 +18,29 @@ export const EditPage = () => {
   const [skillsTwo, setSkillsTwo] = useState("");
   const [skillsThree, setSkillsThree] = useState("");
 
-  const getPet = async () => {
-    let result = await axios.get("http://localhost:8000/api/pets/get/" + petId);
-    setName(result.data.petName);
-    setType(result.data.petType);
-    setDescription(result.data.petDescription);
-    setSkillsOne(result.data.petSkills.skillOne);
-    setSkillsTwo(result.data.petSkills.skillTwo);
-    setSkillsThree(result.data.petSkills.skillThree);
+  const getPirate = async () => {
+    let result = await axios.get("http://localhost:8000/api/pirates/get/" + pirateId);
+    setName(result.data.pirateName);
+    setType(result.data.pirateType);
+    setDescription(result.data.pirateDescription);
+    setSkillsOne(result.data.pirateSkills.skillOne);
+    setSkillsTwo(result.data.pirateSkills.skillTwo);
+    setSkillsThree(result.data.pirateSkills.skillThree);
   };
 
-  const editPet = async () => {
+  const editPirate = async () => {
     let data = {
-      petName: name,
-      petType: type,
-      petDescription: description,
-      petSkills: {
+      pirateName: name,
+      pirateType: type,
+      pirateDescription: description,
+      pirateSkills: {
         skillOne: skillsOne,
         skillTwo: skillsTwo,
         skillThree: skillsThree,
       },
     };
     try {
-      let result = await axios.put("http://localhost:8000/api/pets/update/"+petId,data);
+      let result = await axios.put("http://localhost:8000/api/pirates/update/"+pirateId,data);
       if (result.status === 200) {
         navigate("/");
       }
@@ -50,17 +50,17 @@ export const EditPage = () => {
   };
 
   useEffect(() => {
-    getPet();
+    getPirate();
   }, []);
 
-  const goToHome = () => {
+  const seeCrew = () => {
     navigate("/");
   };
 
   return (
     <div>
       <HeaderCompo
-        onclick={goToHome}
+        onclick={seeCrew}
         subTitle={`Edit ${name}`}
         linkName={"Back to Home"}
       ></HeaderCompo>
@@ -68,7 +68,7 @@ export const EditPage = () => {
       <div className={styles.formContainer}>
 
         <form>
-          <label>Pet Name:</label>
+          <label>Pirate Name:</label>
 
 
           <input
@@ -86,7 +86,7 @@ export const EditPage = () => {
 
 
 
-          <label>Pet Type:</label>
+          <label>Pirate Type:</label>
 
 
           <input
@@ -105,7 +105,7 @@ export const EditPage = () => {
 
 
 
-          <label>Pet Description:</label>
+          <label>Pirate Description:</label>
           <input
             type="text"
             value={description}
@@ -122,8 +122,8 @@ export const EditPage = () => {
 
 
           <ButtonCompo
-            onclick={editPet}
-            name={"✏️ Edit Pet"}
+            onclick={editPirate}
+            name={"✏️ Edit Pirate"}
             color={"dodgerblue"}
           ></ButtonCompo>
 

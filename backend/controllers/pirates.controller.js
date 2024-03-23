@@ -1,10 +1,10 @@
-import Pets from "../models/pets.model.js";
+import Pirates from "../models/pirates.model.js";
 
 //CREATE
-const createPet = async (req, res) => {
+const createPirate = async (req, res) => {
   try {
     let data = req.body;
-    let newData = await Pets.create(data);
+    let newData = await Pirates.create(data);
     res.status(200).json(newData);
   } catch (error) {
     console.log("Error" + error.message);
@@ -15,9 +15,9 @@ const createPet = async (req, res) => {
 };
 
 // GET ALL
-const getAllPets = async (req, res) => {
+const getAllPirates = async (req, res) => {
   try {
-    let list = await Pets.find().sort({ petType: 1 }).exec();
+    let list = await Pirates.find().sort({ pirateType: 1 }).exec();
     res.status(200).json(list);
   } catch (error) {
     console.log("Error" + error.message);
@@ -28,10 +28,10 @@ const getAllPets = async (req, res) => {
 };
 
 // GET BY ID
-const getPetsById = async (req, res) => {
+const getPiratesById = async (req, res) => {
   try {
-    let id = req.params.petsId;
-    let found = await Pets.findById(id);
+    let id = req.params.piratesId;
+    let found = await Pirates.findById(id);
     res.status(200).json(found);
   } catch (error) {
     console.log("Error" + error.message);
@@ -42,11 +42,11 @@ const getPetsById = async (req, res) => {
 };
 
 //UPDATE NORMAL
-const updatePet = async (req, res) => {
+const updatePirate = async (req, res) => {
   try {
-    let id = req.params.petsId;
+    let id = req.params.piratesId;
     let data = req.body;
-    await Pets.findByIdAndUpdate(id, data, { runValidators: true });
+    await Pirates.findByIdAndUpdate(id, data, { runValidators: true });
     res.status(200).json();
   } catch (error) {
     console.log("Error" + error);
@@ -57,10 +57,10 @@ const updatePet = async (req, res) => {
 };
 
 //BORRAR
-const deletePet = async (req, res) => {
+const deletePirate = async (req, res) => {
   try {
-    let id = req.params.petsId;
-    await Pets.findByIdAndDelete(id);
+    let id = req.params.piratesId;
+    await Pirates.findByIdAndDelete(id);
     res.status(200).json();
   } catch (error) {
     console.log("Error" + error.message);
@@ -70,4 +70,4 @@ const deletePet = async (req, res) => {
   }
 };
 
-export { createPet, getAllPets, getPetsById, updatePet, deletePet };
+export { createPirate, getAllPirates, getPiratesById, updatePirate, deletePirate };

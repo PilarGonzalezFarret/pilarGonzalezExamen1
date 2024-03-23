@@ -7,39 +7,38 @@ import styles from "./HomePage.module.css";
 export const HomePage = () => {
   const navigate = useNavigate();
 
-  const [petList, setPetList] = useState([]);
+  const [pirateList, setPirateList] = useState([]);
 
-  const callPetList = async () => {
+  const callPirateList = async () => {
     try {
-      let result = await axios.get("http://localhost:8000/api/pets/get");
-      setPetList(result.data);
+      let result = await axios.get("http://localhost:8000/api/pirates/get");
+      setPirateList(result.data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    callPetList();
+    callPirateList();
   }, []);
 
-  const goToEdit = (petId) => {
-    navigate(`/pets/${petId}/edit`);
+  const goToEdit = (pirateId) => {
+    navigate(`/pirates/${pirateId}/edit`);
   };
 
-  const goToDetails = (petId) => {
-    navigate(`/pets/${petId}`);
+  const goToDetails = (pirateId) => {
+    navigate(`/pirates/${pirateId}`);
   };
 
   const goToCreate = () => {
-    navigate("/pets/new");
+    navigate("/pirates/new");
   };
 
   return (
     <div>
       <HeaderCompo
         onclick={goToCreate}
-        subTitle={"These pets are looking for a good home"}
-        linkName={"Add a pet to the shelter"}
+        linkName={"Add a pirate"}
       ></HeaderCompo>
       <div className={styles.container}>
         <table className={styles.tableContainer}>
@@ -49,11 +48,11 @@ export const HomePage = () => {
             <th>Actions</th>
           </tr>
 
-          {petList.map((item, index) => {
+          {pirateList.map((item, index) => {
             return (
               <tr key={index}>
-                <td>{item.petName}</td>
-                <td>{item.petType}</td>
+                <td>{item.pirateName}</td>
+                <td>{item.pirateType}</td>
                 <td>
                   <a
                     className={styles.link}
