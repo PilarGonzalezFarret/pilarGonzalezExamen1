@@ -23,7 +23,7 @@ export const DetailsPage = () => {
       pegLeg: false,
       eyePatch: false,
       hookHand: false
-    }, */
+    },  */
   });
 
   const getPirateById = async () => {
@@ -86,13 +86,16 @@ export const DetailsPage = () => {
           <p>{`Hook Hand: ${pirate.pirateFeatures}`}</p>
         </div>
       </div>
-      boton={
+      <div className={styles.customButton}>
+      {
           <ButtonCompo
             onclick={killPirate}
             name={`Wallk the Plank ${pirate.pirateName}`}
             color={"red"}
+            
           ></ButtonCompo>
         }
+        </div>
     </div>
   );
 };

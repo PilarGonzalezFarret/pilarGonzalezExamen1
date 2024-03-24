@@ -1,41 +1,38 @@
 body {
     background-color: orange;
-  }
-
-.tableContainer {
-    border: 2px solid black;
 }
 
+.tableContainer {
+    border: 2px solid white;
+}
 
 .container {
     display: flex;
-    justify-content: space-around;
-
+    justify-content: center; /* Centra horizontalmente */
 }
 
-
-
-
-/* table tr:nth-child(odd) {
-    background-color: beige;
-} */
-
-th {
-    background-color: antiquewhite;
+.tableContainer {
+    border: 2px solid white;
+    margin-top: 20px; /* Agrega un espacio entre la tabla y el borde superior del contenedor */
 }
+
 
 table {
     border-collapse: collapse;
+    background-color: white;
 }
 
 table td {
-    border: 10px solid orange;
     padding: 8px;
+    border-bottom: 10px solid orange; 
 }
 
-/* table td:first-child {
-    border-left: none;
-} */
+.nameCell {
+    border-bottom: 2px solid white;
+    display: flex; 
+    justify-content: center;
+    font-weight: bold;
+}
 
 .linkDet {
     color: white;

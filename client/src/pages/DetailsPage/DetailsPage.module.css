@@ -1,22 +1,26 @@
 body {
     background-color: orange;
-  }
+}
 
-.container{
-    border: 2px solid black;
+.container {
+    background-color: white;
     margin-right: 252px;
     margin-left: 252px;
     padding: 16px;
 }
 
-
-
-.subContainer{
+.customButton {
     display: flex;
-    align-items: baseline;
-    
+    padding: 10px;
+    right: 10px;
 }
 
-.subContainer > h3{
+.subContainer {
+    display: flex;
+    align-items: baseline;
+
+}
+
+.subContainer>h3 {
     padding-right: 32px;
 }

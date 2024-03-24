@@ -105,7 +105,7 @@ export const CreatePage = () => {
 
 
         </form>
-        <form>
+        <form className="form2">
           <label>Position</label>
           <select
             value={position}
@@ -120,24 +120,33 @@ export const CreatePage = () => {
             <option value="Littlefish">Littlefish</option>
           </select>
 
-          <label>Peg Leg:</label>
-          <input
-            type="checkbox"
-            checked={pegLeg}
-            onChange={(e) => setPegLeg(e.target.checked)}
-          />
-          <label>Eye Patch:</label>
-          <input
-            type="checkbox"
-            checked={eyePatch}
-            onChange={(e) => setEyePatch(e.target.checked)}
-          />
-          <label>Hook Hand:</label>
-          <input
-            type="checkbox"
-            checked={hookHand}
-            onChange={(e) => setHookHand(e.target.checked)}
-          />
+          <div className={styles.checkboxContainer}>
+            <label>Peg Leg:</label>
+            <input
+              type="checkbox"
+              checked={pegLeg}
+              onChange={(e) => setPegLeg(e.target.checked)}
+            />
+          </div>
+
+          <div className={styles.checkboxContainer}>
+            <label>Eye Patch:</label>
+            <input
+              type="checkbox"
+              checked={eyePatch}
+              onChange={(e) => setEyePatch(e.target.checked)}
+            />
+          </div>
+
+          <div className={styles.checkboxContainer}>
+            <label>Hook Hand:</label>
+            <input
+              type="checkbox"
+              checked={hookHand}
+              onChange={(e) => setHookHand(e.target.checked)}
+            />
+          </div>
+          
           <ButtonCompo
             onclick={createPirate}
             name={"📤 Add Pirate"}

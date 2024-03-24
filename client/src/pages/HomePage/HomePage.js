@@ -7,7 +7,7 @@ import styles from "./HomePage.module.css";
 export const HomePage = () => {
   const navigate = useNavigate();
 
-  const [pirateList, setPirateList] = useState([]);   
+  const [pirateList, setPirateList] = useState([]);
 
   const callPirateList = async () => {
     try {
@@ -41,18 +41,16 @@ export const HomePage = () => {
         linkName={"Add a pirate"}
       ></HeaderCompo>
       <div className={styles.container}>
-        <img
         <table className={styles.tableContainer}>
           {pirateList.map((item, index) => {
             return (
               <tr key={index}>
-                <td>{item.pirateName}</td>
-                <td>{item.pirateType}</td>
-                <td>
 
+                <td>
+                  <td className={styles.nameCell}>{item.pirateName}</td>
                   <button
                     className={styles.linkDet}
-                    onClick={() => goToDetails(item._id)}    //Botón ok, ver width
+                    onClick={() => goToDetails(item._id)}
                   >
                     View Pirate
                   </button>
@@ -60,7 +58,7 @@ export const HomePage = () => {
                   <button className={styles.linkEdit} onClick={() => goToEdit(item._id)}>
                     Edit
                   </button>
-                
+
                 </td>
               </tr>
             );
