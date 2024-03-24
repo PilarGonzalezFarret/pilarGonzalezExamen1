@@ -1,3 +1,7 @@
+body {
+    background-color: orange;
+  }
+
 .container{
     border: 2px solid black;
     margin-right: 252px;

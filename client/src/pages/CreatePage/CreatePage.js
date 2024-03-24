@@ -13,7 +13,6 @@ export const CreatePage = () => {
   const [treassure, setTreasure] = useState(0);
   const [phrase, setPhrase] = useState("");
   const [position, setPosition] = useState("");
-  const [skillsThree, setSkillsThree] = useState("");
   const [pegLeg, setPegLeg] = useState(false);
   const [eyePatch, setEyePatch] = useState(false);
   const [hookHand, setHookHand] = useState(false);
@@ -26,11 +25,6 @@ export const CreatePage = () => {
         pirateTreassure: treassure,
         piratePhrase: phrase,
         piratePosition: position,
-        /* pirateSkills: {
-          //skillOne: skillsOne,
-          //skillTwo: skillsTwo,
-          skillThree: skillsThree,
-        }, */
         pirateFeatures: {
           pegLeg,
           eyePatch,
@@ -103,6 +97,12 @@ export const CreatePage = () => {
             value={phrase}
             onChange={(e) => setPhrase(e.target.value)}
           />
+          {phrase.length < 5 && phrase.length > 0 && (
+            <p className={styles.error}>
+              Pirate Catch Phrase must be at least 5 characters long...
+            </p>
+          )}
+
 
         </form>
         <form>

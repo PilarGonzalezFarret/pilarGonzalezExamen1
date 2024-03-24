@@ -17,7 +17,7 @@ const createPirate = async (req, res) => {
 // GET ALL
 const getAllPirates = async (req, res) => {
   try {
-    let list = await Pirates.find().sort({ pirateType: 1 }).exec();
+    let list = await Pirates.find();
     res.status(200).json(list);
   } catch (error) {
     console.log("Error" + error.message);

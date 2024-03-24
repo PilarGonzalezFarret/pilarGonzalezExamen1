@@ -1,14 +1,13 @@
+body {
+    background-color: orange;
+  }
+
 .tableContainer {
     border: 2px solid black;
-
-
 }
-body {
-    background-color: rgb(230, 219, 198);
-}
+
 
 .container {
-    background-color: orange;
     display: flex;
     justify-content: space-around;
 
@@ -38,9 +37,19 @@ table td {
     border-left: none;
 } */
 
-.link {
-    color: black;
-    background-color: gray;
+.linkDet {
+    color: white;
+    background-color: blue;
     text-decoration: none;
     cursor: pointer;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.linkEdit {
+    color: black;
+    background-color: red;
+    text-decoration: none;
+    cursor: pointer;
+    width: 200px;
 }

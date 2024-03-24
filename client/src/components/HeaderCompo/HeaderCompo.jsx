@@ -1,5 +1,5 @@
 import styles from "./HeaderCompo.module.css";
-import { Link } from 'react-router-dom';
+
 
 export const HeaderCompo = (props) => {
   return (
@@ -7,9 +7,9 @@ export const HeaderCompo = (props) => {
       <div className={styles.container}>
         <h1>Pirate Crew</h1>
 
-        <a className={styles.linkStyle} onClick={props.onclick} >
+        <button className={styles.linkStyle} onClick={props.onclick} >
           {props.linkName}
-        </a>
+        </button>
       </div>
       <div className={styles.container2}>
         <h2>{props.subTitle}</h2>

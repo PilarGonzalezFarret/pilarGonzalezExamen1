@@ -9,9 +9,8 @@ const PiratesSchema = new mongoose.Schema({
         unique: true
         
     },
-    url: {
+    pirateUrl: {
         type: String,
-        minlength: 3,
         required: [true, "Image Url is required"]
     },
     treasure:{
@@ -26,7 +25,6 @@ const PiratesSchema = new mongoose.Schema({
     crewPosition: {
         type: String,
         enum: ['Captain', 'Tinkerbell', 'Warrior', 'Cook', 'Gunner', 'Littlefish'],
-        required: [true, "Category is required"]
     },
     // Campos de casillas de verificación
     features: {

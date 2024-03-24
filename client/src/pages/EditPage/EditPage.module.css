@@ -1,3 +1,7 @@
+body {
+  background-color: orange;
+}
+
 .formContainer {
     border: 2px solid black;
     display: flex;

@@ -1,7 +1,10 @@
+
+
 .container {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: chocolate;
   }
   
   .container2 {
@@ -12,7 +15,8 @@
   }
   
   .linkStyle {
-    color: dodgerblue;
-    text-decoration: underline;
+    color: black;
+    background-color: ;
+    text-decoration: none;
     cursor: pointer;
   }

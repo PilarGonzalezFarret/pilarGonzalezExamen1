@@ -12,35 +12,35 @@ export const EditPage = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [description, setDescription] = useState("");
-  const [skillsOne, setSkillsOne] = useState("");
-  const [skillsTwo, setSkillsTwo] = useState("");
-  const [skillsThree, setSkillsThree] = useState("");
+  const [url, setUrl] = useState("");
+  const [treassure, setTreasure] = useState(0);
+  const [phrase, setPhrase] = useState("");
+  const [position, setPosition] = useState("");
+  /* const [pegLeg, setPegLeg] = useState(false);
+  const [eyePatch, setEyePatch] = useState(false);
+  const [hookHand, setHookHand] = useState(false); */
 
   const getPirate = async () => {
     let result = await axios.get("http://localhost:8000/api/pirates/get/" + pirateId);
     setName(result.data.pirateName);
-    setType(result.data.pirateType);
-    setDescription(result.data.pirateDescription);
-    setSkillsOne(result.data.pirateSkills.skillOne);
-    setSkillsTwo(result.data.pirateSkills.skillTwo);
-    setSkillsThree(result.data.pirateSkills.skillThree);
+    setUrl(result.data.pirateUrl);
+    setTreasure(result.data.pirateTreassure);
+    setPhrase(result.data.piratePhrase);
+    setPosition(result.data.piratePosition);
+    /* setPegLeg(result.data.pirateFeatures.pegLeg);
+    setEyePatch(result.data.pirateFeatures.eyePatch);
+    setHookHand(result.data.pirateFeatures.hookHand); */
   };
 
   const editPirate = async () => {
     let data = {
       pirateName: name,
-      pirateType: type,
-      pirateDescription: description,
-      pirateSkills: {
-        skillOne: skillsOne,
-        skillTwo: skillsTwo,
-        skillThree: skillsThree,
-      },
+      pirateUrl: url,
+      pirateTreassure: treassure,
+      piratePhrase: phrase,
     };
     try {
-      let result = await axios.put("http://localhost:8000/api/pirates/update/"+pirateId,data);
+      let result = await axios.put("http://localhost:8000/api/pirates/update/" + pirateId, data);
       if (result.status === 200) {
         navigate("/");
       }
@@ -65,92 +65,93 @@ export const EditPage = () => {
         linkName={"Back to Home"}
       ></HeaderCompo>
 
-      <div className={styles.formContainer}>
 
+      <div className={styles.formContainer}>
         <form>
           <label>Pirate Name:</label>
-
-
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          {name.length < 3 && name.length > 0 && (
+          {name.length < 5 && name.length > 0 && (
             <p className={styles.error}>
-              Name must be at least 3 characters long...
+              Name must be at least 5 characters long...
+            </p>
+          )}
+          {name.length > 30 && (
+            <p className={styles.error}>
+              Name must be up to 30 characters long...
             </p>
           )}
 
-
-
-
-
-          <label>Pirate Type:</label>
-
-
+          <label>Image Url:</label>
           <input
             type="text"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
           />
-          {type.length < 3 && type.length > 0 && (
-            <p className={styles.error}>
-              Type must be at least 3 characters long...
-            </p>
-          )}
 
+          <label># of Treassure Chests:</label>
+          <input
+            type="number"
+            value={treassure}
+            onChange={(e) => setTreasure(e.target.value)}
+          />
 
-
-
-
-
-          <label>Pirate Description:</label>
+          <label>Pirate Catch Phrase:</label>
           <input
             type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={phrase}
+            onChange={(e) => setPhrase(e.target.value)}
           />
-          {description.length < 3 && description.length > 0 && (
+          {phrase.length < 5 && phrase.length > 0 && (
             <p className={styles.error}>
-              Description must be at least 3 characters long...
+              Pirate Catch Phrase must be at least 5 characters long...
             </p>
           )}
 
-      
 
+        </form>
+        <form>
+          <label>Position</label>
+          <select
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
+          >
+            <option value="">Select Position</option>
+            <option value="Captain">Captain</option>
+            <option value="Tinkerbell">Tinkerbell</option>
+            <option value="Warrior">Warrior</option>
+            <option value="Cook">Cook</option>
+            <option value="Gunner">Gunner</option>
+            <option value="Littlefish">Littlefish</option>
+          </select>
 
+          {/* <label>Peg Leg:</label>
+           <input
+            type="checkbox"
+            checked={pegLeg}
+            onChange={(e) => setPegLeg(e.target.checked)}
+          /> 
+          <label>Eye Patch:</label>
+          <input
+            type="checkbox"
+            checked={eyePatch}
+            onChange={(e) => setEyePatch(e.target.checked)}
+          />
+          <label>Hook Hand:</label>
+          <input
+            type="checkbox"
+            checked={hookHand}
+            onChange={(e) => setHookHand(e.target.checked)}
+          /> */}
 
           <ButtonCompo
             onclick={editPirate}
             name={"✏️ Edit Pirate"}
             color={"dodgerblue"}
           ></ButtonCompo>
-
-
-          
-        </form>
-
-        <form>
-          <label>Skills (optional):</label>
-          <label>Skill 1:</label>
-          <input
-            type="text"
-            value={skillsOne}
-            onChange={(e) => setSkillsOne(e.target.value)}
-          />
-          <label>Skill 2:</label>
-          <input
-            type="text"
-            value={skillsTwo}
-            onChange={(e) => setSkillsTwo(e.target.value)}
-          />
-          <label>Skill 3:</label>
-          <input
-            type="text"
-            value={skillsThree}
-            onChange={(e) => setSkillsThree(e.target.value)}
-          />
         </form>
       </div>
     </div>

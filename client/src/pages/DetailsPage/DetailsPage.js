@@ -13,13 +13,17 @@ export const DetailsPage = () => {
 
   const [pirate, setPirate] = useState({
     pirateName: "",
-    pirateType: "",
-    pirateDescription: "",
-    pirateSkills: {
-      skillOne: "",
-      skillTwo: "",
-      skillThree: "",
-    },
+    pirateUrl: "",
+    pirateTreassure: 0,
+    piratePhrase: "",
+    piratePosition: "",
+    pirateFeatures: false,
+    
+    /* {
+      pegLeg: false,
+      eyePatch: false,
+      hookHand: false
+    }, */
   });
 
   const getPirateById = async () => {
@@ -33,7 +37,7 @@ export const DetailsPage = () => {
     }
   };
 
-  const adoptPirate = async () => {
+  const killPirate = async () => {
     try {
       let result = await axios.delete(
         "http://localhost:8000/api/pirates/delete/" + pirateId
@@ -57,36 +61,40 @@ export const DetailsPage = () => {
       <HeaderCompo
         onclick={seeCrew}
         subTitle={`Details about: ${pirate.pirateName}`}
-        linkName={"Back to Home"}
-        boton={
-          <ButtonCompo
-            onclick={adoptPirate}
-            name={`🏰 Adopt ${pirate.pirateName}`}
-            color={"red"}
-          ></ButtonCompo>
-        }
+        linkName={"See Crew"}
+       
       ></HeaderCompo>
 
       <div className={styles.container}>
         <div className={styles.subContainer}>
-          <h3>Pirate Type: </h3>
-          <label>{pirate.pirateType}</label>
+          <p>{`Position: ${pirate.piratePosition}`}</p>
+        </div>
+      
+        <div className={styles.subContainer}>
+          <p>{`Treassures: ${pirate.pirateTreassure}`}</p>
         </div>
 
         <div className={styles.subContainer}>
-          <h3>Description:</h3>
-          <label>{pirate.pirateDescription}</label>
+          <p>{`Peg Leg: ${pirate.pirateFeatures}`}</p>
         </div>
 
         <div className={styles.subContainer}>
-          <h3>Skills :</h3>
-          <label className={styles.skills}>
-            {pirate.pirateSkills.skillOne} <br />
-            {pirate.pirateSkills.skillTwo} <br />
-            {pirate.pirateSkills.skillThree}
-          </label>
+          <p>{`Eye Patch: ${pirate.pirateFeatures}`}</p>
+        </div>
+
+        <div className={styles.subContainer}>
+          <p>{`Hook Hand: ${pirate.pirateFeatures}`}</p>
         </div>
       </div>
+      boton={
+          <ButtonCompo
+            onclick={killPirate}
+            name={`Wallk the Plank ${pirate.pirateName}`}
+            color={"red"}
+          ></ButtonCompo>
+        }
     </div>
   );
 };
+
+//original
