@@ -16,7 +16,6 @@ function App() {
           <Route path="/pirates/:id/edit" element={<EditPage />} />
         </Routes>
       </BrowserRouter>
-
     </div>
   );
 }

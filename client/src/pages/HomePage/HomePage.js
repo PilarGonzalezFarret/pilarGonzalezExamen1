@@ -42,11 +42,11 @@ export const HomePage = () => {
       ></HeaderCompo>
       <div className={styles.container}>
         <table className={styles.tableContainer}>
-          <tr>
+          {/* <tr>
             <th>Name</th>
             <th>Type</th>
             <th>Actions</th>
-          </tr>
+          </tr> */}
 
           {pirateList.map((item, index) => {
             return (

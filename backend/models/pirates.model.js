@@ -25,7 +25,7 @@ const PiratesSchema = new mongoose.Schema({
     // Campo de selección
     crewPosition: {
         type: String,
-        enum: ['Captain', 'Warrior', 'Navigator', 'Cook', 'Gunner'],
+        enum: ['Captain', 'Tinkerbell', 'Warrior', 'Cook', 'Gunner', 'Littlefish'],
         required: [true, "Category is required"]
     },
     // Campos de casillas de verificación
