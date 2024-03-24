@@ -21,8 +21,28 @@ const PiratesSchema = new mongoose.Schema({
         type: String,
         minlength: [5, "Pirate catch phrase must have at least 5 characters."],
         required: [true, "Catch Phrase is required"]
+    },
+    // Campo de selección
+    crewPosition: {
+        type: String,
+        enum: ['Captain', 'Warrior', 'Navigator', 'Cook', 'Gunner'],
+        required: [true, "Category is required"]
+    },
+    // Campos de casillas de verificación
+    features: {
+        pegLeg: {
+            type: Boolean,
+            default: false
+        },
+        eyePatch: {
+            type: Boolean,
+            default: false
+        },
+        hookHand: {
+            type: Boolean,
+            default: false
+        }
     }
-
 }, {timestamps: true});
 
 const Pirates = mongoose.model("pirates", PiratesSchema);

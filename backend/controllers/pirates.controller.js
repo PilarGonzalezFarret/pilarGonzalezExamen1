@@ -41,7 +41,7 @@ const getPiratesById = async (req, res) => {
   }
 };
 
-//UPDATE NORMAL
+//UPDATE 
 const updatePirate = async (req, res) => {
   try {
     let id = req.params.piratesId;
@@ -56,7 +56,7 @@ const updatePirate = async (req, res) => {
   }
 };
 
-//BORRAR
+//DELETE
 const deletePirate = async (req, res) => {
   try {
     let id = req.params.piratesId;

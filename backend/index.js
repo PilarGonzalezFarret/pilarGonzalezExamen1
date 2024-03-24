@@ -8,7 +8,7 @@ const app = express();
 //Habilitar dependencias
 app.use(cors()); // Habilitamos el acceso a la API desde cualquier origen
 app.use(express.json()); // Habilitamos el uso de JSON en la API
-app.use(pirateRoutes.pirate); // Habilitamos las rutas de la API
+app.use(pirateRoutes.pirateRouter); // Habilitamos las rutas de la API
 app.listen(8000); // Levantamos el servidor en el puerto 8000
 
 
